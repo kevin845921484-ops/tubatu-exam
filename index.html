@@ -486,7 +486,11 @@ function startTimer() {
 }
 
 function submitExam() {
-  if(submitted) return;
+  console.log('提交试卷', {submitted, answersCount: Object.keys(answers).length});
+  if(submitted) {
+    console.log('试卷已提交过');
+    return;
+  }
   submitted = true;
   clearInterval(timerInterval);
   
@@ -647,13 +651,17 @@ function submitExam() {
   }
   
   // Disable inputs
-  var inputs = container.querySelectorAll('input,textarea');
-  for(var i=0; i<inputs.length; i++){
-    inputs[i].disabled = true;
+  console.log('container:', container);
+  if(container){
+    var inputs = container.querySelectorAll('input,textarea');
+    for(var i=0; i<inputs.length; i++){
+      inputs[i].disabled = true;
+    }
   }
   document.getElementById('btnSubmit').disabled = true;
   
   // Show result
+  console.log('显示结果页面');
   document.getElementById('examHeader').className = '';
   document.getElementById('timer').className = 'timer-fixed';
   document.getElementById('progressWrap').className = '';
@@ -661,6 +669,7 @@ function submitExam() {
   document.getElementById('navSidebar').className = 'nav-sidebar';
   document.getElementById('resultPage').classList.add('visible');
   window.scrollTo(0,0);
+  console.log('提交完成');
 }
 
 function retryExam() {
