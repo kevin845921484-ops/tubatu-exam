@@ -771,7 +771,7 @@ function sendFeishuWebhook(name, score, status, dept, time) {
   var message = {
     msg_type: 'text',
     content: {
-      text: emoji + ' 新考试成绩\\n姓名：' + name + '\\n部门：' + dept + '\\n总分：' + score + '\\n结果：' + status + '\\n时间：' + time
+      text: emoji + ' 新考试成绩' + '\n姓名：' + name + '\n部门：' + dept + '\n总分：' + score + '\n结果：' + status + '\n时间：' + time
     }
   };
   
@@ -789,7 +789,7 @@ function sendFeishuWebhook(name, score, status, dept, time) {
     console.log('飞书响应:', data);
     if(data.StatusCode === 0 || data.code === 0) {
       console.log('✅ 飞书通知已发送');
-      alert('✅ 提交成功！\\n\\n成绩已发送到飞书群\\n\\n总分：' + score + ' (' + status + ')');
+      alert('✅ 提交成功！\n\n成绩已发送到飞书群\n\n总分：' + score + ' (' + status + ')');
     } else {
       console.error('❌ 飞书通知发送失败:', data);
       alert('提交成功！但飞书通知发送失败：' + JSON.stringify(data));
