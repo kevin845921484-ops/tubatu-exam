@@ -266,7 +266,7 @@ function $(id) { return document.getElementById(id); }
 // ========== DATA ==========
 // 飞书多维表格配置
 var FEISHU_CONFIG = {
-  webhookUrl: '', // 可选：飞书群机器人 Webhook
+  webhookUrl: 'https://open.feishu.cn/open-apis/bot/v2/hook/d94af12d-37fe-439c-a94a-d0c0faeba64f',
   appToken: 'Y4eLbqB7JakyLhstzhjcjY0GnSe',
   tableId: 'tblRjOpQePT15ujq',
   apiToken: 't-g1044sl27FX6WWCDUJBGNUKJO3ADPVVL3IEKA35T'
@@ -814,14 +814,46 @@ function submitToFeishu() {
 }
 
 /**
- * 发送飞书 Webhook 通知（可选）
+ * 发送飞书 Webhook 通知
  */
 function sendFeishuWebhook(name, score, status) {
   var emoji = status === '优秀' ? '🎉' : (status === '合格' ? '✅' : '❌');
+  var color = status === '优秀' ? '#10B981' : (status === '合格' ? '#3B82F6' : '#EF4444');
+  
+  // 飞书富文本消息格式
   var message = {
-    msg_type: 'text',
-    content: {
-      text: emoji + ' 新考试成绩\\n姓名：' + name + '\\n总分：' + score + '\\n结果：' + status
+    msg_type: 'interactive',
+    card: {
+      header: {
+        title: {
+          tag: 'plain_text',
+          content: emoji + ' 新考试成绩通知'
+        },
+        template: status === '优秀' ? 'green' : (status === '合格' ? 'blue' : 'red')
+      },
+      elements: [
+        {
+          tag: 'div',
+          fields: [
+            { is_short: true, text: { tag: 'lark_md', content: '**👤 姓名**\n' + name } },
+            { is_short: true, text: { tag: 'lark_md', content: '**📊 总分**\n' + score } },
+            { is_short: true, text: { tag: 'lark_md', content: '** 结果**\n' + status } },
+            { is_short: true, text: { tag: 'lark_md', content: '**🕐 时间**\n' + new Date().toLocaleString('zh-CN') } }
+          ]
+        },
+        {
+          tag: 'hr'
+        },
+        {
+          tag: 'note',
+          elements: [
+            {
+              tag: 'plain_text',
+              content: '土巴兔客服考试系统 · 自动通知'
+            }
+          ]
+        }
+      ]
     }
   };
   
@@ -831,10 +863,17 @@ function sendFeishuWebhook(name, score, status) {
     body: JSON.stringify(message)
   })
   .then(function(response) {
-    console.log('飞书通知已发送');
+    return response.json();
+  })
+  .then(function(data) {
+    if(data.StatusCode === 0 || data.code === 0) {
+      console.log('✅ 飞书通知已发送');
+    } else {
+      console.error('❌ 飞书通知发送失败:', data);
+    }
   })
   .catch(function(error) {
-    console.error('飞书通知发送失败:', error);
+    console.error('❌ 飞书通知发送错误:', error);
   });
 }
 
