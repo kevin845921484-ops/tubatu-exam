@@ -46,8 +46,8 @@
   #progressWrap.visible { display:block; }
   #examBody.visible { display:block; }
   #navSidebar.visible { display:flex !important; }
-  .result-page { display:none; }
-  .result-page.visible { display:block; }
+  .result-page { display:none !important; max-width:800px; margin:0 auto; padding:32px 16px 80px; }
+  .result-page.visible { display:block !important; }
 
   /* Header */
   .exam-header { background: linear-gradient(135deg, #FF6A2B 0%, #FF8F5E 100%); color:#fff; padding:32px 24px; text-align:center; }
@@ -114,7 +114,6 @@
   .btn-submit:disabled { opacity:.5; cursor:not-allowed; }
 
   /* Result */
-  .result-page { max-width:800px; margin:0 auto; padding:32px 16px 80px; }
   .result-header { text-align:center; margin-bottom:32px; }
   .result-score-ring { width:160px; height:160px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 20px; font-weight:800; }
   .result-score-ring .big-num { font-size:52px; line-height:1; color:#fff; }
@@ -697,14 +696,38 @@ function reviewExam() {
 
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded', function(){
+  console.log('DOM 加载完成');
   container = document.getElementById('questionsContainer');
+  console.log('container:', container);
   renderQuestions();
   renderNav();
   
-  document.getElementById('btnStart').addEventListener('click', startExam);
-  document.getElementById('btnSubmit').addEventListener('click', submitExam);
-  document.getElementById('btnRetry').addEventListener('click', retryExam);
-  document.getElementById('btnReview').addEventListener('click', reviewExam);
+  var btnStart = document.getElementById('btnStart');
+  var btnSubmit = document.getElementById('btnSubmit');
+  var btnRetry = document.getElementById('btnRetry');
+  var btnReview = document.getElementById('btnReview');
+  
+  console.log('按钮元素:', {btnStart, btnSubmit, btnRetry, btnReview});
+  
+  if(btnStart) {
+    btnStart.addEventListener('click', startExam);
+    console.log('开始考试按钮已绑定');
+  }
+  if(btnSubmit) {
+    btnSubmit.addEventListener('click', function(){
+      console.log('提交按钮被点击');
+      submitExam();
+    });
+    console.log('提交按钮已绑定');
+  }
+  if(btnRetry) {
+    btnRetry.addEventListener('click', retryExam);
+    console.log('重试按钮已绑定');
+  }
+  if(btnReview) {
+    btnReview.addEventListener('click', reviewExam);
+    console.log('回顾按钮已绑定');
+  }
   
   console.log('考试系统初始化完成');
 });
