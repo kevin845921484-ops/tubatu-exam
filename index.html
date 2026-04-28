@@ -818,44 +818,16 @@ function submitToFeishu() {
  */
 function sendFeishuWebhook(name, score, status) {
   var emoji = status === '优秀' ? '🎉' : (status === '合格' ? '✅' : '❌');
-  var color = status === '优秀' ? '#10B981' : (status === '合格' ? '#3B82F6' : '#EF4444');
   
-  // 飞书富文本消息格式
+  // 先使用简单的文本消息测试
   var message = {
-    msg_type: 'interactive',
-    card: {
-      header: {
-        title: {
-          tag: 'plain_text',
-          content: emoji + ' 新考试成绩通知'
-        },
-        template: status === '优秀' ? 'green' : (status === '合格' ? 'blue' : 'red')
-      },
-      elements: [
-        {
-          tag: 'div',
-          fields: [
-            { is_short: true, text: { tag: 'lark_md', content: '**👤 姓名**\n' + name } },
-            { is_short: true, text: { tag: 'lark_md', content: '**📊 总分**\n' + score } },
-            { is_short: true, text: { tag: 'lark_md', content: '** 结果**\n' + status } },
-            { is_short: true, text: { tag: 'lark_md', content: '**🕐 时间**\n' + new Date().toLocaleString('zh-CN') } }
-          ]
-        },
-        {
-          tag: 'hr'
-        },
-        {
-          tag: 'note',
-          elements: [
-            {
-              tag: 'plain_text',
-              content: '土巴兔客服考试系统 · 自动通知'
-            }
-          ]
-        }
-      ]
+    msg_type: 'text',
+    content: {
+      text: emoji + ' 新考试成绩\n姓名：' + name + '\n总分：' + score + '\n结果：' + status + '\n时间：' + new Date().toLocaleString('zh-CN')
     }
   };
+  
+  console.log('发送飞书消息:', message);
   
   fetch(FEISHU_CONFIG.webhookUrl, {
     method: 'POST',
@@ -866,6 +838,7 @@ function sendFeishuWebhook(name, score, status) {
     return response.json();
   })
   .then(function(data) {
+    console.log('飞书响应:', data);
     if(data.StatusCode === 0 || data.code === 0) {
       console.log('✅ 飞书通知已发送');
     } else {
