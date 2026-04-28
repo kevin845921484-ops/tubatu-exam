@@ -264,15 +264,15 @@
 function $(id) { return document.getElementById(id); }
 
 // ========== DATA ==========
-// 飞书多维表格配置
+// 飞书配置
 var FEISHU_CONFIG = {
   webhookUrl: 'https://open.feishu.cn/open-apis/bot/v2/hook/d94af12d-37fe-439c-a94a-d0c0faeba64f',
   appToken: 'Y4eLbqB7JakyLhstzhjcjY0GnSe',
   tableId: 'tblRjOpQePT15ujq',
-  apiToken: 't-g1044sl27FX6WWCDUJBGNUKJO3ADPVVL3IEKA35T'
+  apiToken: ''
 };
 
-// 单选题 - 使用单引号避免引号冲突
+// 单选题
 var singleChoice = [
 {id:1, tag:'业务模式', q:'土巴兔的业务模式描述，正确的是：', opts:['自营装修施工，承接业主的装修订单','C 端连接有装修需求的用户，B 端连接装修公司、工长、设计师等生态角色，平台帮助 BC 两端实现智能匹配，并为 C 端提供装修保障服务、为 B 端提供赋能服务','装修材料零售商，赚取材料差价','装修监理公司，按工程项目收费'], ans:1},
 {id:2, tag:'业务模式', q:'土巴兔的核心业务和第二曲线业务分别是：', opts:['核心：装修交易业务；第二曲线：供应链业务、工长直装业务','核心：电商业务；第二曲线：装修业务','核心：金融业务；第二曲线：监理业务','核心：建材直营；第二曲线：地产业务'], ans:0},
@@ -658,7 +658,6 @@ function submitExam() {
   }
   
   // Disable inputs
-  console.log('container:', container);
   if(container){
     var inputs = container.querySelectorAll('input,textarea');
     for(var i=0; i<inputs.length; i++){
@@ -668,7 +667,6 @@ function submitExam() {
   document.getElementById('btnSubmit').disabled = true;
   
   // Show result
-  console.log('显示结果页面');
   document.getElementById('examHeader').className = '';
   document.getElementById('timer').className = 'timer-fixed';
   document.getElementById('progressWrap').className = '';
@@ -678,7 +676,7 @@ function submitExam() {
   window.scrollTo(0,0);
   console.log('提交完成');
   
-  // 提交到飞书多维表格
+  // 提交到飞书
   submitToFeishu();
 }
 
@@ -706,37 +704,28 @@ function reviewExam() {
 }
 
 // ========== FEISHU INTEGRATION ==========
-/**
- * 提交考试成绩到飞书多维表格
- */
 function submitToFeishu() {
-  // 如果未配置飞书，跳过提交
-  if(!FEISHU_CONFIG.appToken || !FEISHU_CONFIG.tableId || !FEISHU_CONFIG.apiToken) {
-    console.log('未配置飞书多维表格，跳过数据提交');
+  if(!FEISHU_CONFIG.webhookUrl) {
+    console.log('未配置飞书 Webhook，跳过通知');
     return;
   }
   
-  // 准备数据
   var candidateName = document.getElementById('cName').value.trim() || '未填写';
   var candidateDept = document.getElementById('cDept').value.trim() || '未填写';
   var candidateId = document.getElementById('cId').value.trim() || '未填写';
   var examTime = new Date().toLocaleString('zh-CN');
   
-  // 计算各题型得分
   var singleCorrect = 0, tfCorrect = 0, essayScore = 0;
   
-  // 单选题
   for(var i=0; i<singleChoice.length; i++){
     if(answers[singleChoice[i].id] === singleChoice[i].ans) singleCorrect++;
   }
   
-  // 判断题
   for(var i=0; i<trueOrFalse.length; i++){
     var correctAns = trueOrFalse[i].ans ? 1 : 0;
     if(answers[trueOrFalse[i].id] == correctAns) tfCorrect++;
   }
   
-  // 论述题（估算）
   var essayConfig = {
     41: {required: ["互联网","C 端","B 端","匹配","量房","先装修后支付","质检","陪签"]},
     42: {required: ["排雷","推销","设计师","排雷师","报告"]},
@@ -764,66 +753,25 @@ function submitToFeishu() {
   var passStatus = totalScore >= 80 ? '合格' : '不合格';
   if(totalScore >= 90) passStatus = '优秀';
   
-  // 构建飞书多维表格记录
-  var records = [
-    {
-      fields: {
-        "姓名": candidateName,
-        "部门": candidateDept,
-        "工号": candidateId,
-        "考试时间": examTime,
-        "单选题正确": singleCorrect,
-        "判断题正确": tfCorrect,
-        "论述题得分": essayScore,
-        "总分": totalScore,
-        "结果": passStatus
-      }
-    }
-  ];
-  
-  console.log('准备提交飞书数据:', records);
-  
-  // 发送数据到飞书多维表格 API
-  var url = 'https://open.feishu.cn/open-apis/bitable/v1/apps/' + FEISHU_CONFIG.appToken + '/tables/' + FEISHU_CONFIG.tableId + '/records';
-  
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + FEISHU_CONFIG.apiToken,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ records: records })
-  })
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    if(data.code === 0) {
-      console.log('✅ 飞书数据提交成功');
-      // 如果配置了 Webhook，发送通知
-      if(FEISHU_CONFIG.webhookUrl) {
-        sendFeishuWebhook(candidateName, totalScore, passStatus);
-      }
-    } else {
-      console.error('❌ 飞书数据提交失败:', data);
-    }
-  })
-  .catch(function(error) {
-    console.error('❌ 飞书数据提交错误:', error);
+  console.log('考试成绩:', {
+    姓名：candidateName,
+    部门：candidateDept,
+    工号：candidateId,
+    时间：examTime,
+    总分：totalScore,
+    结果：passStatus
   });
+  
+  sendFeishuWebhook(candidateName, totalScore, passStatus, candidateDept, examTime);
 }
 
-/**
- * 发送飞书 Webhook 通知
- */
-function sendFeishuWebhook(name, score, status) {
+function sendFeishuWebhook(name, score, status, dept, time) {
   var emoji = status === '优秀' ? '🎉' : (status === '合格' ? '✅' : '❌');
   
-  // 先使用简单的文本消息测试
   var message = {
     msg_type: 'text',
     content: {
-      text: emoji + ' 新考试成绩\n姓名：' + name + '\n总分：' + score + '\n结果：' + status + '\n时间：' + new Date().toLocaleString('zh-CN')
+      text: emoji + ' 新考试成绩\\n姓名：' + name + '\\n部门：' + dept + '\\n总分：' + score + '\\n结果：' + status + '\\n时间：' + time
     }
   };
   
@@ -841,12 +789,15 @@ function sendFeishuWebhook(name, score, status) {
     console.log('飞书响应:', data);
     if(data.StatusCode === 0 || data.code === 0) {
       console.log('✅ 飞书通知已发送');
+      alert('✅ 提交成功！\\n\\n成绩已发送到飞书群\\n\\n总分：' + score + ' (' + status + ')');
     } else {
       console.error('❌ 飞书通知发送失败:', data);
+      alert('提交成功！但飞书通知发送失败：' + JSON.stringify(data));
     }
   })
   .catch(function(error) {
     console.error('❌ 飞书通知发送错误:', error);
+    alert('提交成功！但飞书通知发送出错');
   });
 }
 
