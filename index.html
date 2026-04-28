@@ -264,12 +264,12 @@
 function $(id) { return document.getElementById(id); }
 
 // ========== DATA ==========
-// 飞书多维表格配置 - 请替换为你的实际配置
+// 飞书多维表格配置
 var FEISHU_CONFIG = {
-  webhookUrl: '', // 飞书 Webhook URL（可选，用于发送通知）
-  appToken: '',   // 飞书多维表格 App Token
-  tableId: '',    // 数据表 ID
-  apiToken: ''    // 飞书 API Token（需要读取权限）
+  webhookUrl: '', // 可选：飞书群机器人 Webhook
+  appToken: 'Y4eLbqB7JakyLhstzhjcjY0GnSe',
+  tableId: 'tblRjOpQePT15ujq',
+  apiToken: 't-g1044sl27FX6WWCDUJBGNUKJO3ADPVVL3IEKA35T'
 };
 
 // 单选题 - 使用单引号避免引号冲突
@@ -708,10 +708,6 @@ function reviewExam() {
 // ========== FEISHU INTEGRATION ==========
 /**
  * 提交考试成绩到飞书多维表格
- * 需要在 FEISHU_CONFIG 中配置：
- * - appToken: 飞书多维表格的 App Token
- * - tableId: 数据表 ID（通常是"tbl"开头）
- * - apiToken: 飞书 API 访问 Token
  */
 function submitToFeishu() {
   // 如果未配置飞书，跳过提交
@@ -769,19 +765,23 @@ function submitToFeishu() {
   if(totalScore >= 90) passStatus = '优秀';
   
   // 构建飞书多维表格记录
-  var fields = {
-    '姓名': candidateName,
-    '部门': candidateDept,
-    '工号': candidateId,
-    '考试时间': examTime,
-    '单选题正确': singleCorrect,
-    '判断题正确': tfCorrect,
-    '论述题得分': essayScore,
-    '总分': totalScore,
-    '结果': passStatus
-  };
+  var records = [
+    {
+      fields: {
+        "姓名": candidateName,
+        "部门": candidateDept,
+        "工号": candidateId,
+        "考试时间": examTime,
+        "单选题正确": singleCorrect,
+        "判断题正确": tfCorrect,
+        "论述题得分": essayScore,
+        "总分": totalScore,
+        "结果": passStatus
+      }
+    }
+  ];
   
-  console.log('准备提交飞书数据:', fields);
+  console.log('准备提交飞书数据:', records);
   
   // 发送数据到飞书多维表格 API
   var url = 'https://open.feishu.cn/open-apis/bitable/v1/apps/' + FEISHU_CONFIG.appToken + '/tables/' + FEISHU_CONFIG.tableId + '/records';
@@ -792,19 +792,20 @@ function submitToFeishu() {
       'Authorization': 'Bearer ' + FEISHU_CONFIG.apiToken,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      fields: fields
-    })
+    body: JSON.stringify({ records: records })
   })
   .then(function(response) {
-    if(response.ok) {
+    return response.json();
+  })
+  .then(function(data) {
+    if(data.code === 0) {
       console.log('✅ 飞书数据提交成功');
       // 如果配置了 Webhook，发送通知
       if(FEISHU_CONFIG.webhookUrl) {
         sendFeishuWebhook(candidateName, totalScore, passStatus);
       }
     } else {
-      console.error('❌ 飞书数据提交失败:', response.status);
+      console.error('❌ 飞书数据提交失败:', data);
     }
   })
   .catch(function(error) {
