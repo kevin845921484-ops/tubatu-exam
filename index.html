@@ -264,6 +264,14 @@
 function $(id) { return document.getElementById(id); }
 
 // ========== DATA ==========
+// 飞书多维表格配置 - 请替换为你的实际配置
+var FEISHU_CONFIG = {
+  webhookUrl: '', // 飞书 Webhook URL（可选，用于发送通知）
+  appToken: '',   // 飞书多维表格 App Token
+  tableId: '',    // 数据表 ID
+  apiToken: ''    // 飞书 API Token（需要读取权限）
+};
+
 // 单选题 - 使用单引号避免引号冲突
 var singleChoice = [
 {id:1, tag:'业务模式', q:'土巴兔的业务模式描述，正确的是：', opts:['自营装修施工，承接业主的装修订单','C 端连接有装修需求的用户，B 端连接装修公司、工长、设计师等生态角色，平台帮助 BC 两端实现智能匹配，并为 C 端提供装修保障服务、为 B 端提供赋能服务','装修材料零售商，赚取材料差价','装修监理公司，按工程项目收费'], ans:1},
@@ -669,6 +677,9 @@ function submitExam() {
   document.getElementById('resultPage').classList.add('visible');
   window.scrollTo(0,0);
   console.log('提交完成');
+  
+  // 提交到飞书多维表格
+  submitToFeishu();
 }
 
 function retryExam() {
@@ -692,6 +703,138 @@ function reviewExam() {
       document.getElementById('qcard-41').scrollIntoView({behavior:'smooth', block:'center'});
     }
   }, 100);
+}
+
+// ========== FEISHU INTEGRATION ==========
+/**
+ * 提交考试成绩到飞书多维表格
+ * 需要在 FEISHU_CONFIG 中配置：
+ * - appToken: 飞书多维表格的 App Token
+ * - tableId: 数据表 ID（通常是"tbl"开头）
+ * - apiToken: 飞书 API 访问 Token
+ */
+function submitToFeishu() {
+  // 如果未配置飞书，跳过提交
+  if(!FEISHU_CONFIG.appToken || !FEISHU_CONFIG.tableId || !FEISHU_CONFIG.apiToken) {
+    console.log('未配置飞书多维表格，跳过数据提交');
+    return;
+  }
+  
+  // 准备数据
+  var candidateName = document.getElementById('cName').value.trim() || '未填写';
+  var candidateDept = document.getElementById('cDept').value.trim() || '未填写';
+  var candidateId = document.getElementById('cId').value.trim() || '未填写';
+  var examTime = new Date().toLocaleString('zh-CN');
+  
+  // 计算各题型得分
+  var singleCorrect = 0, tfCorrect = 0, essayScore = 0;
+  
+  // 单选题
+  for(var i=0; i<singleChoice.length; i++){
+    if(answers[singleChoice[i].id] === singleChoice[i].ans) singleCorrect++;
+  }
+  
+  // 判断题
+  for(var i=0; i<trueOrFalse.length; i++){
+    var correctAns = trueOrFalse[i].ans ? 1 : 0;
+    if(answers[trueOrFalse[i].id] == correctAns) tfCorrect++;
+  }
+  
+  // 论述题（估算）
+  var essayConfig = {
+    41: {required: ["互联网","C 端","B 端","匹配","量房","先装修后支付","质检","陪签"]},
+    42: {required: ["排雷","推销","设计师","排雷师","报告"]},
+    43: {required: ["规范","审核","陪签","499","签约","免费"]},
+    44: {required: ["第三方","独立","JGJ","GB","合格","付款"]},
+    45: {required: ["银行","托管","30","40","节点","尾款","平台"]}
+  };
+  
+  for(var i=0; i<essayQs.length; i++){
+    var q = essayQs[i];
+    var userAns = answers[q.id] || "";
+    var config = essayConfig[q.id];
+    if(userAns.length >= 5 && config){
+      var hitRequired = 0;
+      var normalized = userAns.toLowerCase();
+      for(var j=0; j<config.required.length; j++){
+        if(normalized.indexOf(config.required[j].toLowerCase()) !== -1) hitRequired++;
+      }
+      if(hitRequired >= config.required.length * 0.6) essayScore += 5;
+      else essayScore += 3;
+    }
+  }
+  
+  var totalScore = singleCorrect * 2 + tfCorrect * 1 + essayScore;
+  var passStatus = totalScore >= 80 ? '合格' : '不合格';
+  if(totalScore >= 90) passStatus = '优秀';
+  
+  // 构建飞书多维表格记录
+  var fields = {
+    '姓名': candidateName,
+    '部门': candidateDept,
+    '工号': candidateId,
+    '考试时间': examTime,
+    '单选题正确': singleCorrect,
+    '判断题正确': tfCorrect,
+    '论述题得分': essayScore,
+    '总分': totalScore,
+    '结果': passStatus
+  };
+  
+  console.log('准备提交飞书数据:', fields);
+  
+  // 发送数据到飞书多维表格 API
+  var url = 'https://open.feishu.cn/open-apis/bitable/v1/apps/' + FEISHU_CONFIG.appToken + '/tables/' + FEISHU_CONFIG.tableId + '/records';
+  
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + FEISHU_CONFIG.apiToken,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      fields: fields
+    })
+  })
+  .then(function(response) {
+    if(response.ok) {
+      console.log('✅ 飞书数据提交成功');
+      // 如果配置了 Webhook，发送通知
+      if(FEISHU_CONFIG.webhookUrl) {
+        sendFeishuWebhook(candidateName, totalScore, passStatus);
+      }
+    } else {
+      console.error('❌ 飞书数据提交失败:', response.status);
+    }
+  })
+  .catch(function(error) {
+    console.error('❌ 飞书数据提交错误:', error);
+  });
+}
+
+/**
+ * 发送飞书 Webhook 通知（可选）
+ */
+function sendFeishuWebhook(name, score, status) {
+  var emoji = status === '优秀' ? '🎉' : (status === '合格' ? '✅' : '❌');
+  var message = {
+    msg_type: 'text',
+    content: {
+      text: emoji + ' 新考试成绩\\n姓名：' + name + '\\n总分：' + score + '\\n结果：' + status
+    }
+  };
+  
+  fetch(FEISHU_CONFIG.webhookUrl, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(message)
+  })
+  .then(function(response) {
+    console.log('飞书通知已发送');
+  })
+  .catch(function(error) {
+    console.error('飞书通知发送失败:', error);
+  });
 }
 
 // ========== INIT ==========
