@@ -22,8 +22,6 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif; background: var(--gray-50); color: var(--gray-900); line-height:1.7; }
-
-  /* ===== Landing Page ===== */
   .landing { position:fixed; inset:0; z-index:300; background:linear-gradient(160deg,#FF6A2B 0%,#FF8F5E 50%,#FFB088 100%); display:flex; align-items:center; justify-content:center; }
   .landing-box { background:rgba(255,255,255,.97); border-radius:24px; padding:48px 40px 40px; max-width:480px; width:90%; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.15); }
   .landing-logo { font-size:56px; margin-bottom:12px; }
@@ -34,8 +32,6 @@
   .btn-start { background:linear-gradient(135deg,#FF6A2B,#FF8F5E); color:#fff; border:none; padding:16px 64px; border-radius:var(--radius); font-size:18px; font-weight:700; cursor:pointer; letter-spacing:2px; }
   .btn-start:hover { box-shadow:0 8px 24px rgba(255,106,43,.4); }
   .btn-start:active { transform:scale(.97); }
-
-  /* ===== Exam Sections ===== */
   #examHeader { display:none; }
   #timer { display:none; }
   #progressWrap { display:none; }
@@ -48,30 +44,20 @@
   #navSidebar.visible { display:flex !important; }
   .result-page { display:none !important; max-width:800px; margin:0 auto; padding:32px 16px 80px; }
   .result-page.visible { display:block !important; }
-
-  /* Header */
   .exam-header { background: linear-gradient(135deg, #FF6A2B 0%, #FF8F5E 100%); color:#fff; padding:32px 24px; text-align:center; }
   .exam-header h1 { font-size:24px; font-weight:700; margin-bottom:8px; }
   .exam-header .subtitle { font-size:14px; opacity:.9; margin-bottom:20px; }
   .exam-info-bar { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; font-size:13px; }
   .exam-info-bar .info-item { display:flex; align-items:center; gap:6px; }
   .exam-info-bar .info-value { font-weight:700; font-size:16px; }
-
-  /* Timer */
   .timer-fixed { position:fixed; top:16px; right:16px; background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); padding:10px 18px; box-shadow:0 4px 12px rgba(0,0,0,.08); z-index:100; font-size:14px; font-weight:600; align-items:center; gap:8px; }
   .timer-fixed.warning { color: var(--danger); }
   .timer-icon { font-size:18px; }
-
-  /* Progress */
   .progress-bar-wrap { background:#fff; border-bottom:1px solid var(--gray-200); padding:12px 24px; position:sticky; top:0; z-index:90; }
   .progress-bar-bg { height:6px; background:var(--gray-200); border-radius:3px; overflow:hidden; max-width:800px; margin:0 auto; }
   .progress-bar-fill { height:100%; background:var(--primary); border-radius:3px; transition:width .3s; }
   .progress-text { text-align:center; font-size:12px; color:var(--gray-500); margin-top:6px; }
-
-  /* Main */
   .exam-body { max-width:800px; margin:0 auto; padding:24px 16px 80px; }
-
-  /* Candidate Info */
   .candidate-form { background:#fff; border-radius:var(--radius); padding:24px; margin-bottom:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
   .candidate-form h2 { font-size:16px; margin-bottom:16px; color:var(--gray-700); }
   .candidate-row { display:flex; gap:16px; flex-wrap:wrap; }
@@ -79,12 +65,8 @@
   .candidate-field label { display:block; font-size:13px; color:var(--gray-500); margin-bottom:4px; }
   .candidate-field input { width:100%; padding:8px 12px; border:1px solid var(--gray-200); border-radius:8px; font-size:14px; outline:none; }
   .candidate-field input:focus { border-color:var(--primary); }
-
-  /* Section */
   .section-title { font-size:18px; font-weight:700; margin:32px 0 16px; padding-left:12px; border-left:4px solid var(--primary); color:var(--gray-900); }
   .section-desc { font-size:13px; color:var(--gray-500); margin:-8px 0 20px 16px; }
-
-  /* Question Card */
   .q-card { background:#fff; border-radius:var(--radius); padding:20px 24px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,.04); border:2px solid transparent; }
   .q-card:hover { box-shadow:0 4px 12px rgba(0,0,0,.08); }
   .q-card.answered { border-color: var(--success); border-left:4px solid var(--success); }
@@ -92,28 +74,19 @@
   .q-tag { display:inline-block; font-size:11px; background:var(--primary-light); color:var(--primary); padding:2px 8px; border-radius:4px; margin-right:8px; }
   .q-text { font-size:15px; margin-bottom:14px; color:var(--gray-900); display:flex; align-items:flex-start; }
   .q-text-content { flex:1; }
-
-  /* Options */
   .options { display:flex; flex-direction:column; gap:8px; margin-left:38px; }
   .option-label { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border:1px solid var(--gray-200); border-radius:10px; cursor:pointer; font-size:14px; line-height:1.6; }
   .option-label:hover { background:var(--primary-light); border-color:var(--primary); }
   .option-label input { accent-color:var(--primary); width:16px; height:16px; margin-top:3px; flex-shrink:0; }
   .option-label.selected { background:var(--primary-light); border-color:var(--primary); font-weight:500; }
-  .option-label.disabled { pointer-events:none; opacity:.85; }
-
-  /* Textarea */
   .essay-area { margin-left:38px; }
   .essay-area textarea { width:100%; min-height:160px; padding:12px 14px; border:1px solid var(--gray-200); border-radius:10px; font-size:14px; line-height:1.7; resize:vertical; outline:none; font-family:inherit; }
   .essay-area textarea:focus { border-color:var(--primary); }
   .essay-area textarea:disabled { background:#F9FAFB; }
-
-  /* Submit */
   .submit-area { text-align:center; margin-top:40px; }
   .btn-submit { background: linear-gradient(135deg, #FF6A2B 0%, #FF8F5E 100%); color:#fff; border:none; padding:14px 56px; border-radius:var(--radius); font-size:16px; font-weight:700; cursor:pointer; }
   .btn-submit:hover { box-shadow:0 6px 20px rgba(255,106,43,.35); }
   .btn-submit:disabled { opacity:.5; cursor:not-allowed; }
-
-  /* Result */
   .result-header { text-align:center; margin-bottom:32px; }
   .result-score-ring { width:160px; height:160px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 20px; font-weight:800; }
   .result-score-ring .big-num { font-size:52px; line-height:1; color:#fff; }
@@ -124,14 +97,12 @@
   .result-grade.pass-grade { color:var(--success); }
   .result-grade.fail-grade { color:var(--danger); }
   .result-name { font-size:14px; color:var(--gray-500); }
-
   .result-stats { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:32px; }
   .stat-card { background:#fff; border-radius:var(--radius); padding:20px 16px; text-align:center; box-shadow:0 1px 4px rgba(0,0,0,.05); }
   .stat-card .stat-val { font-size:28px; font-weight:800; color:var(--primary); }
   .stat-card .stat-val.green { color:var(--success); }
   .stat-card .stat-val.red { color:var(--danger); }
   .stat-card .stat-label { font-size:12px; color:var(--gray-500); margin-top:4px; }
-
   .result-detail-card { background:#fff; border-radius:var(--radius); padding:24px; margin-bottom:24px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
   .result-detail-card h3 { font-size:15px; font-weight:700; margin-bottom:16px; padding-left:10px; border-left:3px solid var(--primary); }
   .detail-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--gray-100); font-size:14px; }
@@ -139,14 +110,11 @@
   .detail-row .detail-score { font-weight:700; }
   .detail-row .detail-score.green { color:var(--success); }
   .detail-row .detail-score.red { color:var(--danger); }
-
   .result-actions { text-align:center; margin-top:32px; }
   .btn-retry { background:var(--primary); color:#fff; border:none; padding:14px 40px; border-radius:var(--radius); font-size:15px; font-weight:700; cursor:pointer; margin-right:12px; }
   .btn-retry:hover { box-shadow:0 4px 16px rgba(255,106,43,.3); }
   .btn-review { background:#fff; color:var(--primary); border:2px solid var(--primary); padding:14px 40px; border-radius:var(--radius); font-size:15px; font-weight:700; cursor:pointer; }
   .btn-review:hover { background:var(--primary-light); }
-
-  /* Sidebar Nav */
   .nav-sidebar { position:fixed; left:12px; top:50%; transform:translateY(-50%); z-index:80; flex-direction:column; gap:4px; max-height:70vh; overflow-y:auto; padding:6px; background:#fff; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
   .nav-dot { width:22px; height:22px; border-radius:6px; border:1px solid var(--gray-200); font-size:9px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:#fff; color:var(--gray-500); }
   .nav-dot:hover { border-color:var(--primary); color:var(--primary); }
@@ -155,60 +123,39 @@
 </style>
 </head>
 <body>
-
-<!-- Landing -->
 <div class="landing" id="landing">
   <div class="landing-box">
     <div class="landing-logo">🏠</div>
     <div class="landing-title">土巴兔 · 客服考试卷</div>
     <div class="landing-sub">兔厂业务模式 & 平台产品服务价值 · 强化内化训练</div>
     <div class="landing-rules">
-      <b>📋 题型分布</b><br>
-      单选题 30 题 × 2 分 = 60 分<br>
-      判断题 10 题 × 1 分 = 10 分<br>
-      论述题 5 题 × 6 分 = 30 分<br><br>
-      <b>⏱️ 考试时长</b>：60 分钟（到时自动提交）<br>
-      <b>🎯 合格标准</b>：80 分合格，90 分以上优秀<br>
-      <b>📌 注意事项</b>：论述题需用自己的话作答<br>
-      <b>🔄 补考规则</b>：不合格者需在 7 日内补考
+      <b>📋 题型分布</b><br>单选题 30 题 × 2 分 = 60 分<br>判断题 10 题 × 1 分 = 10 分<br>论述题 5 题 × 6 分 = 30 分<br><br>
+      <b>⏱️ 考试时长</b>：60 分钟<br><b>🎯 合格标准</b>：80 分合格，90 分以上优秀
     </div>
     <button class="btn-start" id="btnStart">开始考试</button>
   </div>
 </div>
-
-<!-- Header -->
 <div id="examHeader">
   <div class="exam-header">
-    <h1>🏠 土巴兔 · 兔厂业务模式 & 平台产品服务价值</h1>
-    <div class="subtitle">客服考试卷 —— 强化"公司价值"与"平台服务价值"内化训练</div>
+    <h1>🏠 土巴兔 · 客服考试卷</h1>
+    <div class="subtitle">业务模式与平台服务价值考核</div>
     <div class="exam-info-bar">
-      <div class="info-item"><span>📋 单选 30 题×2 分</span></div>
-      <div class="info-item"><span>✅ 判断 10 题×1 分</span></div>
-      <div class="info-item"><span>✍️ 论述 5 题×6 分</span></div>
-      <div class="info-item"><span>⏱️ 时长 <span class="info-value">60 分钟</span></span></div>
-      <div class="info-item"><span>🎯 合格 <span class="info-value">80 分</span></span></div>
+      <div class="info-item">📋 单选 30 题×2 分</div>
+      <div class="info-item">✅ 判断 10 题×1 分</div>
+      <div class="info-item">✍️ 论述 5 题×6 分</div>
+      <div class="info-item">⏱️ 60 分钟</div>
+      <div class="info-item">🎯 80 分合格</div>
     </div>
   </div>
 </div>
-
-<!-- Timer -->
-<div class="timer-fixed" id="timer">
-  <span class="timer-icon">⏱️</span>
-  <span id="timerDisplay">60:00</span>
-</div>
-
-<!-- Progress -->
+<div class="timer-fixed" id="timer"><span class="timer-icon">⏱️</span><span id="timerDisplay">60:00</span></div>
 <div id="progressWrap">
   <div class="progress-bar-wrap">
     <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
     <div class="progress-text" id="progressText">已答 0 / 45 题</div>
   </div>
 </div>
-
-<!-- Sidebar -->
 <div class="nav-sidebar" id="navSidebar"></div>
-
-<!-- Exam Body -->
 <div class="exam-body" id="examBody">
   <div class="candidate-form">
     <h2>📝 考生信息</h2>
@@ -220,18 +167,11 @@
     </div>
   </div>
   <div id="questionsContainer"></div>
-  <div class="submit-area">
-    <button class="btn-submit" id="btnSubmit">提交试卷</button>
-  </div>
+  <div class="submit-area"><button class="btn-submit" id="btnSubmit">提交试卷</button></div>
 </div>
-
-<!-- Result -->
 <div class="result-page" id="resultPage">
   <div class="result-header">
-    <div class="result-score-ring" id="resultRing">
-      <div class="big-num" id="resultBigNum">0</div>
-      <div class="big-label">总分</div>
-    </div>
+    <div class="result-score-ring" id="resultRing"><div class="big-num" id="resultBigNum">0</div><div class="big-label">总分</div></div>
     <div class="result-grade" id="resultGrade"></div>
     <div class="result-name" id="resultName"></div>
   </div>
@@ -241,451 +181,248 @@
     <div class="stat-card"><div class="stat-val" id="statUnanswered">0</div><div class="stat-label">未答题数</div></div>
   </div>
   <div class="result-detail-card">
-    <h3>📊 各题型得分详情</h3>
-    <div class="detail-row"><span>单选题（30 题 × 2 分）</span><span class="detail-score" id="detailSingle">0 / 60</span></div>
-    <div class="detail-row"><span>判断题（10 题 × 1 分）</span><span class="detail-score" id="detailTF">0 / 10</span></div>
-    <div class="detail-row"><span>论述题（5 题 × 6 分）</span><span class="detail-score" id="detailEssay">0 / 30</span></div>
+    <h3>📊 得分详情</h3>
+    <div class="detail-row"><span>单选题</span><span class="detail-score" id="detailSingle">0 / 60</span></div>
+    <div class="detail-row"><span>判断题</span><span class="detail-score" id="detailTF">0 / 10</span></div>
+    <div class="detail-row"><span>论述题</span><span class="detail-score" id="detailEssay">0 / 30</span></div>
     <div class="detail-row" style="font-weight:700;font-size:16px;padding-top:14px;border-top:2px solid var(--gray-200)"><span>总分</span><span class="detail-score" id="detailTotal" style="font-size:20px">0 / 100</span></div>
   </div>
-  <div class="result-detail-card" id="wrongListCard">
-    <h3>❌ 错题速览</h3>
-    <div id="wrongList"></div>
-  </div>
+  <div class="result-detail-card" id="wrongListCard"><h3>❌ 错题速览</h3><div id="wrongList"></div></div>
   <div class="result-actions">
     <button class="btn-retry" id="btnRetry">重新答题</button>
-    <button class="btn-review" id="btnReview">查看试卷详情</button>
+    <button class="btn-review" id="btnReview">查看试卷</button>
   </div>
 </div>
-
 <script>
 (function(){
-
-// ========== HELPER ==========
-function $(id) { return document.getElementById(id); }
-
-// ========== DATA ==========
-// 飞书配置
-var FEISHU_CONFIG = {
-  webhookUrl: 'https://open.feishu.cn/open-apis/bot/v2/hook/d94af12d-37fe-439c-a94a-d0c0faeba64f',
-  appToken: 'Y4eLbqB7JakyLhstzhjcjY0GnSe',
-  tableId: 'tblRjOpQePT15ujq',
-  apiToken: ''
-};
-
-// 单选题
-var singleChoice = [
-{id:1, tag:'业务模式', q:'土巴兔的业务模式描述，正确的是：', opts:['自营装修施工，承接业主的装修订单','C 端连接有装修需求的用户，B 端连接装修公司、工长、设计师等生态角色，平台帮助 BC 两端实现智能匹配，并为 C 端提供装修保障服务、为 B 端提供赋能服务','装修材料零售商，赚取材料差价','装修监理公司，按工程项目收费'], ans:1},
-{id:2, tag:'业务模式', q:'土巴兔的核心业务和第二曲线业务分别是：', opts:['核心：装修交易业务；第二曲线：供应链业务、工长直装业务','核心：电商业务；第二曲线：装修业务','核心：金融业务；第二曲线：监理业务','核心：建材直营；第二曲线：地产业务'], ans:0},
-{id:3, tag:'业务模式', q:'土巴兔以"互联网 + 家装"方式整合了原本割裂的装修环节，下面哪一项不在被整合的范围内？', opts:['用户、装企','设计师、材料','金融、质检','房地产开发与房屋买卖'], ans:3},
-{id:4, tag:'精准匹配', q:'精准匹配最核心的机制是：', opts:['谁交平台费多就把客户优先匹配给谁','"用户需求标签"与"装企擅长标签"比对，并由系统 + 人工双重审核','完全靠人工经验介绍','只看装企报价高低'], ans:1},
-{id:5, tag:'精准匹配', q:'平台一次最多为业主匹配几家装修公司？', opts:['1 家','1~4 家','10 家以上','无上限，越多越好'], ans:1},
-{id:6, tag:'精准匹配', q:'用户需求标签主要采集哪些信息？', opts:['楼盘、预算、装修类型、风格偏好、家庭结构、生活方式','业主身份证号、银行卡号','业主工作单位、收入流水','业主社交关系链'], ans:0},
-{id:7, tag:'精准匹配', q:'客户问"我怕被推荐太多公司打电话"，正确回复是：', opts:['"不会的，您放心"（一句话带过）','"我们是统一邀约机制，只推荐最合适的 1~4 家，且每家都会提前核实资质，在您方便的时候统一时间上门量房"','"您不接电话不就行了"','"我们的电话比较少"'], ans:1},
-{id:8, tag:'量房排雷', q:'"量房排雷"的本质是：', opts:['走流程、拍照打卡的常规上门','在装修第一步，帮用户提前发现风险与隐患，用专业赢得信任','一次销售上门，把客户带去签合同','装修公司必然要做的报价环节'], ans:1},
-{id:9, tag:'量房排雷', q:'量房排雷由谁上门？', opts:['装修公司单方面派人','业主自己请的监理','平台统一派出排雷师 + 装企设计师共同上门','平台只派排雷师一个人'], ans:2},
-{id:10, tag:'量房排雷', q:'量房排雷最终交付给业主的核心成果是：', opts:['一份合同','一份《量房排雷报告》','一张完工照片','一份收据'], ans:1},
-{id:11, tag:'量房排雷', q:'目前能够享受量房排雷服务的城市数量是：', opts:['5 个','10 个（北京、成都、东莞、南京、上海、深圳、苏州、杭州、天津、广州）','20 个','全国所有城市'], ans:1},
-{id:12, tag:'量房排雷', q:'顾问在邀约阶段最需要给客户提前"上预期"的一句话是：', opts:['"量房之后必须签约"','"量房 = 排雷，不是推销"；明确上门目的（看结构、找风险、估预算）','"量房师都很厉害，您听他的就行"','"量房很危险"'], ans:1},
-{id:13, tag:'量房排雷', q:'量房排雷能给用户带来的价值，下列哪一项是错误的？', opts:['清晰化需求——把用户脑海中的模糊想法变成结构化内容','提前发现隐患——墙体、排水、电路、通风等问题提前暴露','节省决策时间——直接对照方案、报价、风格对比','强制业主在量房当场签约'], ans:3},
-{id:14, tag:'陪同签约', q:'陪同签约（也叫审核报价）服务的收费标准是：', opts:['完全免费','999 元/次','499 元/次（签约土巴兔合作装企可享免费陪签）','按合同金额比例收取'], ans:2},
-{id:15, tag:'陪同签约', q:'陪同签约审核内容不包含下列哪一项？', opts:['审核报价清单','审核合同报价','审核合同细则','审核业主收入证明'], ans:3},
-{id:16, tag:'陪同签约', q:'资料中提到的陪签数据，最多一次陪签老师在 89 项报价中找出多少个问题点？', opts:['5 个','10 个','17 个，为用户规避 1.2 万元不合理费用','50 个'], ans:2},
-{id:17, tag:'陪同签约', q:'客户问"装修公司说他们合同很规范，还需要陪签吗？" 标准回应思路是：', opts:['"不需要，您放心"','"正是因为\'规范\'才更需要专业审核，最近一个用户在\'规范合同\'里发现了 3 处工艺描述模糊、2 个材料品牌不明确，提前规避了后期近 8000 元的增项风险"','"您信他们就行"','"看您自己"'], ans:1},
-{id:18, tag:'陪同签约', q:'陪同签约的核心目标是：', opts:['把客户引导到加价','在签约前发现问题、避免后期纠纷、建立信任，让业主"安心签、明白签"','帮装修公司多收钱','替业主签合同'], ans:1},
-{id:19, tag:'第三方质检', q:'土巴兔第三方质检的核心理念是：', opts:['验收前付款','合格才付款','装修公司说了算','业主自己看就行'], ans:1},
-{id:20, tag:'第三方质检', q:'11 次全程质检的检查项数和价格是：', opts:['100 项，19 元/㎡','178 项，29 元/㎡（按房本面积，80 ㎡起算）','200 项，49 元/㎡','50 项，免费'], ans:1},
-{id:21, tag:'第三方质检', q:'20 次全程质检的价格（按房本面积计费，80 ㎡起算）是：', opts:['19 元/㎡','29 元/㎡','49 元/㎡','99 元/㎡'], ans:2},
-{id:22, tag:'第三方质检', q:'第三方质检的验收标准依据的是：', opts:['JGJ/T 304-2013、GB 50210-2018','公司内部标准','装修公司自定义标准','业主自己定标准'], ans:0},
-{id:23, tag:'第三方质检', q:'平台质检团队及服务规模描述，正确的是：', opts:['累计培训上万人次，已为超 76 万家庭提供质检服务，满意度高达 99.7%','培训过几百人，服务约 1 万家庭','团队不到 3 年经验','没有具体数据'], ans:0},
-{id:24, tag:'第三方质检', q:'质检老师在工地一次大约停留多长时间？', opts:['5 分钟','15 分钟','40 分钟左右（视工地情况而定）','一整天'], ans:2},
-{id:25, tag:'先装修后支付', q:'在"先装修后支付"机制里，业主的装修款托管在哪里？', opts:['直接打给土巴兔','直接打给装修公司','100% 托管在合作银行的监管账户，由平台监督','业主自己保管'], ans:2},
-{id:26, tag:'先装修后支付', q:'自 2025 年 10 月 20 日起执行的最新托管比例是：', opts:['50%-50%','30%-40%-30%','20%-60%-20%','100% 一次付清'], ans:1},
-{id:27, tag:'先装修后支付', q:'关于尾款，下列描述正确的是：', opts:['装修结束当天必须付清','尾款可托管最长 30 天，业主确认后再付款','尾款由装修公司随便定','平台直接扣除尾款'], ans:1},
-{id:28, tag:'正品材料&社群团购', q:'土巴兔优选展厅位于：', opts:['北京总部','深圳总部 32 楼，约 3000 ㎡，19 个功能区','上海分公司','全国各地零售门店'], ans:1},
-{id:29, tag:'正品材料&社群团购', q:'土巴兔展厅相比建材市场的价格优势是：', opts:['完全一致','平均价格立省 30% 以上','贵 10%','看心情'], ans:1},
-{id:30, tag:'正品材料&社群团购', q:'对签约用户的国补政策补贴比例是：', opts:['5%','10%','15%-20%','50%'], ans:2}
+function $(id){return document.getElementById(id);}
+var FEISHU_CONFIG={webhookUrl:'https://open.feishu.cn/open-apis/bot/v2/hook/d94af12d-37fe-439c-a94a-d0c0faeba64f'};
+var singleChoice=[
+{id:1,tag:'业务模式',q:'土巴兔的业务模式描述，正确的是：',opts:['自营装修施工','C 端连接用户，B 端连接装企等，平台智能匹配并提供保障','材料零售','监理公司'],ans:1},
+{id:2,tag:'业务模式',q:'土巴兔的核心业务和第二曲线分别是：',opts:['装修交易；供应链、工长直装','电商；装修','金融；监理','建材；地产'],ans:0},
+{id:3,tag:'业务模式',q:'哪项不在整合范围内？',opts:['用户、装企','设计师、材料','金融、质检','房地产开发'],ans:3},
+{id:4,tag:'精准匹配',q:'精准匹配核心机制？',opts:['谁交费多优先','用户需求与装企擅长比对','人工介绍','看报价'],ans:1},
+{id:5,tag:'精准匹配',q:'一次最多匹配几家？',opts:['1 家','1-4 家','10 家以上','无上限'],ans:1},
+{id:6,tag:'精准匹配',q:'用户需求标签采集？',opts:['楼盘、预算、类型等','身份证、银行卡','工作单位、流水','社交关系'],ans:0},
+{id:7,tag:'精准匹配',q:'怕太多公司打电话怎么回？',opts:['不会的','统一邀约 1-4 家，核实资质','您不接就行','电话少'],ans:1},
+{id:8,tag:'量房排雷',q:'量房排雷本质？',opts:['走流程','提前发现风险隐患','销售上门','报价环节'],ans:1},
+{id:9,tag:'量房排雷',q:'谁上门？',opts:['装企','业主监理','排雷师 + 设计师','排雷师'],ans:2},
+{id:10,tag:'量房排雷',q:'交付成果？',opts:['合同','排雷报告','照片','收据'],ans:1},
+{id:11,tag:'量房排雷',q:'多少城市有服务？',opts:['5 个','10 个','20 个','全国'],ans:1},
+{id:12,tag:'量房排雷',q:'上预期的话？',opts:['必须签约','量房=排雷不是推销','听老师的','危险'],ans:1},
+{id:13,tag:'量房排雷',q:'哪项错误？',opts:['清晰需求','提前隐患','节省时间','强制签约'],ans:3},
+{id:14,tag:'陪同签约',q:'收费标准？',opts:['免费','999 元','499 元（合作装企免费）','按比例'],ans:2},
+{id:15,tag:'陪同签约',q:'不审核什么？',opts:['报价清单','合同报价','合同细则','收入证明'],ans:3},
+{id:16,tag:'陪同签约',q:'最多找出多少问题？',opts:['5 个','10 个','17 个（规避 1.2 万）','50 个'],ans:2},
+{id:17,tag:'陪同签约',q:'合同规范还需要陪签？',opts:['不需要','规范才更需要审核','您信他们','看您'],ans:1},
+{id:18,tag:'陪同签约',q:'核心目标？',opts:['加价','发现问题建立信任','多收钱','替签'],ans:1},
+{id:19,tag:'质检',q:'核心理念？',opts:['验收前付款','合格才付款','装企说了算','自己看'],ans:1},
+{id:20,tag:'质检',q:'11 次质检价格？',opts:['100 项 19 元','178 项 29 元','200 项 49 元','50 项免费'],ans:1},
+{id:21,tag:'质检',q:'20 次质检价格？',opts:['19 元','29 元','49 元','99 元'],ans:2},
+{id:22,tag:'质检',q:'验收标准？',opts:['JGJ/T 304-2013','公司标准','装企标准','业主定'],ans:0},
+{id:23,tag:'质检',q:'团队规模？',opts:['培训上万，服务 76 万，99.7% 满意','几百人，1 万','不到 3 年','无数据'],ans:0},
+{id:24,tag:'质检',q:'停留多久？',opts:['5 分钟','15 分钟','40 分钟','一整天'],ans:2},
+{id:25,tag:'支付',q:'钱托管在哪？',opts:['土巴兔','装企','银行监管账户','自己保管'],ans:2},
+{id:26,tag:'支付',q:'托管比例？',opts:['50-50','30-40-30','20-60-20','100%'],ans:1},
+{id:27,tag:'支付',q:'尾款？',opts:['当天付清','托管 30 天','随便定','直接扣'],ans:1},
+{id:28,tag:'材料',q:'展厅位置？',opts:['北京','深圳 32 楼 3000 平','上海','各地'],ans:1},
+{id:29,tag:'材料',q:'价格优势？',opts:['一致','省 30%+','贵 10%','看心情'],ans:1},
+{id:30,tag:'材料',q:'国补比例？',opts:['5%','10%','15-20%','50%'],ans:2}
 ];
-
-// 判断题
-var trueOrFalse = [
-{id:31, tag:'业务模式', q:'土巴兔是装修施工方，自己派工人到业主家装修。', ans:false},
-{id:32, tag:'精准匹配', q:'精准匹配会综合"用户需求标签"和"装企擅长标签"，并由系统 + 人工双重审核。', ans:true},
-{id:33, tag:'量房排雷', q:'量房排雷的价值是"用专业换信任"，本质不是走流程，而是帮用户提前发现风险与隐患。', ans:true},
-{id:34, tag:'量房排雷', q:'在土巴兔已开放量房排雷服务的城市，业主可以免费享受平台派出的排雷师上门服务。', ans:true},
-{id:35, tag:'陪同签约', q:'陪同签约是免费服务，业主任何情况下都不收费。', ans:false},
-{id:36, tag:'陪同签约', q:'陪同签约由独立的第三方陪签老师审核图纸、预算、合同三项内容，目的是帮业主"安心签、明白签"。', ans:true},
-{id:37, tag:'第三方质检', q:'第三方质检和装修公司自带的质检在性质上是一样的，都属于公司内部把关。', ans:false},
-{id:38, tag:'第三方质检', q:'11 次全程质检按房本面积 80 ㎡起算，覆盖 178 项检查内容。', ans:true},
-{id:39, tag:'先装修后支付', q:'在"先装修后支付"机制中，业主的钱直接转到土巴兔平台账户。', ans:false},
-{id:40, tag:'正品材料&社群团购', q:'土巴兔社群团购支持发货前免费囤货 30~180 天，未发货前可申请全额退款。', ans:true}
+var trueOrFalse=[
+{id:31,tag:'业务模式',q:'土巴兔自己派工人装修。',ans:false},
+{id:32,tag:'精准匹配',q:'精准匹配由系统 + 人工双重审核。',ans:true},
+{id:33,tag:'量房排雷',q:'量房排雷是用专业换信任。',ans:true},
+{id:34,tag:'量房排雷',q:'量房排雷免费。',ans:true},
+{id:35,tag:'陪同签约',q:'陪同签约永远免费。',ans:false},
+{id:36,tag:'陪同签约',q:'陪签老师审核图纸、预算、合同。',ans:true},
+{id:37,tag:'质检',q:'第三方质检和装企质检一样。',ans:false},
+{id:38,tag:'质检',q:'11 次质检覆盖 178 项。',ans:true},
+{id:39,tag:'支付',q:'钱转到土巴兔账户。',ans:false},
+{id:40,tag:'材料',q:'支持囤货 30-180 天，可退款。',ans:true}
 ];
-
-// 论述题
-var essayQs = [
-{id:41, tag:'业务模式', q:'请用一段话向第一次进线的业主介绍"土巴兔的业务模式"。要求体现：①"互联网 + 家装"；②C 端连接用户、B 端连接装修公司/工长/设计师等；③BC 智能匹配；④为 C 端提供装修保障服务。'},
-{id:42, tag:'量房排雷', q:'客户问："为什么免费量房，还要带装修公司一起来？是不是要联合卖货？" 请写回应话术，体现"量房=排雷，不是推销"。'},
-{id:43, tag:'陪同签约', q:'客户问："装修公司说他们合同很规范，我自己看得懂，没必要花 499 元找你们陪签吧？" 请写回应话术。'},
-{id:44, tag:'第三方质检', q:'客户问："你们第三方质检和装修公司自己的质检有啥不一样？" 请写回应话术。'},
-{id:45, tag:'先装修后支付', q:'客户担心"我把钱交了，万一装修公司跑路怎么办？" 请用"先装修后支付"机制回应。'}
+var essayQs=[
+{id:41,tag:'业务模式',q:'请介绍土巴兔业务模式。要求：①互联网 + 家装；②C 端 B 端连接；③BC 智能匹配；④装修保障服务。'},
+{id:42,tag:'量房排雷',q:'客户问为什么带装修公司来量房？请回应，体现"量房=排雷，不是推销"。'},
+{id:43,tag:'陪同签约',q:'客户说合同规范不需要陪签，请回应。'},
+{id:44,tag:'质检',q:'第三方质检和装修公司质检有什么区别？请回应。'},
+{id:45,tag:'支付',q:'客户担心交钱后装企跑路，请用"先装修后支付"回应。'}
 ];
+var allQuestions=singleChoice.concat(trueOrFalse).concat(essayQs);
+var letters=['A','B','C','D'];
+var answers={};
+var submitted=false;
+var totalSeconds=3600;
+var timerInterval=null;
+var wrongIds=[];
+var container=null;
 
-var allQuestions = singleChoice.concat(trueOrFalse).concat(essayQs);
-var letters = ['A','B','C','D'];
-var answers = {};
-var submitted = false;
-var totalSeconds = 3600;
-var timerInterval = null;
-var wrongIds = [];
-var container = null;
-
-// ========== RENDER ==========
-function renderQuestions() {
-  container = document.getElementById('questionsContainer');
-  var html = '';
-
-  // Single choice
-  html += '<h2 class="section-title">第一部分 · 单选题<span style="font-size:14px;font-weight:400;color:var(--gray-500);margin-left:12px;">每题 2 分，共 60 分</span></h2>';
-  html += '<p class="section-desc">每题只有一个正确答案，请选择对应选项。</p>';
-  for (var i = 0; i < singleChoice.length; i++) {
-    var q = singleChoice[i];
-    html += '<div class="q-card" id="qcard-' + q.id + '" data-id="' + q.id + '" data-type="single">';
-    html += '<div class="q-text"><span class="q-num">' + q.id + '</span><span class="q-tag">' + q.tag + '</span><span class="q-text-content">' + q.q + '</span></div>';
-    html += '<div class="options">';
-    for (var j = 0; j < q.opts.length; j++) {
-      html += '<label class="option-label" id="opt-' + q.id + '-' + j + '"><input type="radio" name="q' + q.id + '" value="' + j + '">' + q.opts[j] + '</label>';
+function renderQuestions(){
+  container=document.getElementById('questionsContainer');
+  var html='';
+  html+='<h2 class="section-title">第一部分 · 单选题</h2><p class="section-desc">每题只有一个正确答案。</p>';
+  for(var i=0;i<singleChoice.length;i++){
+    var q=singleChoice[i];
+    html+='<div class="q-card" id="qcard-'+q.id+'"><div class="q-text"><span class="q-num">'+q.id+'</span><span class="q-tag">'+q.tag+'</span><span class="q-text-content">'+q.q+'</span></div><div class="options">';
+    for(var j=0;j<q.opts.length;j++){
+      html+='<label class="option-label" id="opt-'+q.id+'-'+j+'"><input type="radio" name="q'+q.id+'" value="'+j+'">'+q.opts[j]+'</label>';
     }
-    html += '</div></div>';
+    html+='</div></div>';
   }
-
-  // True/False
-  html += '<h2 class="section-title">第二部分 · 判断题<span style="font-size:14px;font-weight:400;color:var(--gray-500);margin-left:12px;">每题 1 分，共 10 分</span></h2>';
-  html += '<p class="section-desc">请判断下列说法是否正确。</p>';
-  for (var i = 0; i < trueOrFalse.length; i++) {
-    var q = trueOrFalse[i];
-    html += '<div class="q-card" id="qcard-' + q.id + '" data-id="' + q.id + '" data-type="tf">';
-    html += '<div class="q-text"><span class="q-num">' + q.id + '</span><span class="q-tag">' + q.tag + '</span><span class="q-text-content">' + q.q + '</span></div>';
-    html += '<div class="options">';
-    html += '<label class="option-label"><input type="radio" name="q' + q.id + '" value="1">对</label>';
-    html += '<label class="option-label"><input type="radio" name="q' + q.id + '" value="0">错</label>';
-    html += '</div></div>';
+  html+='<h2 class="section-title">第二部分 · 判断题</h2><p class="section-desc">判断下列说法是否正确。</p>';
+  for(var i=0;i<trueOrFalse.length;i++){
+    var q=trueOrFalse[i];
+    html+='<div class="q-card" id="qcard-'+q.id+'"><div class="q-text"><span class="q-num">'+q.id+'</span><span class="q-tag">'+q.tag+'</span><span class="q-text-content">'+q.q+'</span></div><div class="options">';
+    html+='<label class="option-label"><input type="radio" name="q'+q.id+'" value="1">对</label>';
+    html+='<label class="option-label"><input type="radio" name="q'+q.id+'" value="0">错</label>';
+    html+='</div></div>';
   }
-
-  // Essay
-  html += '<h2 class="section-title">第三部分 · 论述题<span style="font-size:14px;font-weight:400;color:var(--gray-500);margin-left:12px;">每题 6 分，共 30 分</span></h2>';
-  html += '<p class="section-desc">请用自己的话作答，重在讲清平台价值与服务亮点。</p>';
-  for (var i = 0; i < essayQs.length; i++) {
-    var q = essayQs[i];
-    html += '<div class="q-card" id="qcard-' + q.id + '" data-id="' + q.id + '" data-type="essay">';
-    html += '<div class="q-text"><span class="q-num">' + q.id + '</span><span class="q-tag">' + q.tag + '</span><span class="q-text-content">' + q.q + '</span></div>';
-    html += '<div class="essay-area"><textarea id="essay-' + q.id + '" placeholder="请在此输入你的答案，建议至少包含相关关键词..."></textarea></div>';
-    html += '</div>';
+  html+='<h2 class="section-title">第三部分 · 论述题</h2><p class="section-desc">请用自己的话作答。</p>';
+  for(var i=0;i<essayQs.length;i++){
+    var q=essayQs[i];
+    html+='<div class="q-card" id="qcard-'+q.id+'"><div class="q-text"><span class="q-num">'+q.id+'</span><span class="q-tag">'+q.tag+'</span><span class="q-text-content">'+q.q+'</span></div><div class="essay-area"><textarea id="essay-'+q.id+'" placeholder="请作答..."></textarea></div></div>';
   }
-
-  container.innerHTML = html;
-
-  // Bind option events
-  var labels = container.querySelectorAll('.option-label');
-  for (var i = 0; i < labels.length; i++) {
+  container.innerHTML=html;
+  var labels=container.querySelectorAll('.option-label');
+  for(var i=0;i<labels.length;i++){
     (function(label){
-      label.addEventListener('click', function(){
-        if(submitted) return;
-        var input = this.querySelector('input');
-        if(!input) return;
-        var qid = parseInt(input.name.replace('q',''));
-        var val = parseInt(input.value);
-        answers[qid] = val;
-        
-        var card = document.getElementById('qcard-' + qid);
-        card.classList.add('answered');
-        
-        var siblings = this.parentNode.querySelectorAll('.option-label');
-        for(var j=0; j<siblings.length; j++){
-          if(siblings[j] !== this) siblings[j].classList.remove('selected');
-        }
+      label.addEventListener('click',function(){
+        if(submitted)return;
+        var input=this.querySelector('input');if(!input)return;
+        var qid=parseInt(input.name.replace('q',''));var val=parseInt(input.value);
+        answers[qid]=val;
+        document.getElementById('qcard-'+qid).classList.add('answered');
+        var siblings=this.parentNode.querySelectorAll('.option-label');
+        for(var j=0;j<siblings.length;j++){if(siblings[j]!==this)siblings[j].classList.remove('selected');}
         this.classList.add('selected');
-        
-        var navDot = document.getElementById('nav-' + qid);
-        if(navDot) navDot.classList.add('done');
-        
+        var navDot=document.getElementById('nav-'+qid);if(navDot)navDot.classList.add('done');
         updateProgress();
       });
     })(labels[i]);
   }
-
-  // Bind essay events
-  for (var i = 0; i < essayQs.length; i++) {
-    var ta = document.getElementById('essay-' + essayQs[i].id);
+  for(var i=0;i<essayQs.length;i++){
+    var ta=document.getElementById('essay-'+essayQs[i].id);
     if(ta){
-      ta.addEventListener('input', function(){
-        if(submitted) return;
-        var id = parseInt(this.id.replace('essay-',''));
-        var val = this.value.trim();
-        var card = document.getElementById('qcard-' + id);
-        var navDot = document.getElementById('nav-' + id);
-        
-        if(val.length > 0){
-          answers[id] = val;
-          card.classList.add('answered');
-          if(navDot) navDot.classList.add('done');
-        } else {
-          delete answers[id];
-          card.classList.remove('answered');
-          if(navDot) navDot.classList.remove('done');
-        }
+      ta.addEventListener('input',function(){
+        if(submitted)return;
+        var id=parseInt(this.id.replace('essay-',''));var val=this.value.trim();
+        var card=document.getElementById('qcard-'+id);var navDot=document.getElementById('nav-'+id);
+        if(val.length>0){answers[id]=val;card.classList.add('answered');if(navDot)navDot.classList.add('done');}
+        else{delete answers[id];card.classList.remove('answered');if(navDot)navDot.classList.remove('done');}
         updateProgress();
       });
     }
   }
 }
 
-function renderNav() {
-  var nav = document.getElementById('navSidebar');
-  var html = '';
-  for (var i = 0; i < allQuestions.length; i++) {
-    html += '<div class="nav-dot" id="nav-' + allQuestions[i].id + '" title="第' + allQuestions[i].id + '题">' + allQuestions[i].id + '</div>';
+function renderNav(){
+  var nav=document.getElementById('navSidebar');var html='';
+  for(var i=0;i<allQuestions.length;i++){
+    html+='<div class="nav-dot" id="nav-'+allQuestions[i].id+'" title="第'+allQuestions[i].id+'题">'+allQuestions[i].id+'</div>';
   }
-  nav.innerHTML = html;
-  
-  var dots = nav.querySelectorAll('.nav-dot');
-  for (var i = 0; i < dots.length; i++) {
+  nav.innerHTML=html;
+  var dots=nav.querySelectorAll('.nav-dot');
+  for(var i=0;i<dots.length;i++){
     (function(dot){
-      dot.addEventListener('click', function(){
-        var qid = this.id.replace('nav-','');
-        document.getElementById('qcard-' + qid).scrollIntoView({behavior:'smooth', block:'center'});
+      dot.addEventListener('click',function(){
+        var qid=this.id.replace('nav-','');
+        document.getElementById('qcard-'+qid).scrollIntoView({behavior:'smooth',block:'center'});
       });
     })(dots[i]);
   }
 }
 
-function updateProgress() {
-  var count = Object.keys(answers).length;
-  var pct = Math.round(count / allQuestions.length * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressText').textContent = '已答 ' + count + ' / ' + allQuestions.length + ' 题';
+function updateProgress(){
+  var count=Object.keys(answers).length;
+  var pct=Math.round(count/allQuestions.length*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressText').textContent='已答 '+count+' / '+allQuestions.length+' 题';
 }
 
-// ========== EXAM FLOW ==========
-function startExam() {
+function startExam(){
   console.log('开始考试');
-  document.getElementById('landing').style.display = 'none';
+  document.getElementById('landing').style.display='none';
   document.getElementById('examHeader').classList.add('visible');
   document.getElementById('timer').classList.add('visible');
   document.getElementById('progressWrap').classList.add('visible');
   document.getElementById('examBody').classList.add('visible');
   document.getElementById('navSidebar').classList.add('visible');
-  startTimer();
-  window.scrollTo(0,0);
+  startTimer();window.scrollTo(0,0);
 }
 
-function startTimer() {
-  timerInterval = setInterval(function(){
+function startTimer(){
+  timerInterval=setInterval(function(){
     totalSeconds--;
-    if(totalSeconds <= 0){
-      totalSeconds = 0;
-      clearInterval(timerInterval);
-      submitExam();
-    }
-    var m = Math.floor(totalSeconds / 60);
-    var s = totalSeconds % 60;
-    document.getElementById('timerDisplay').textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-    if(totalSeconds <= 300) document.getElementById('timer').classList.add('warning');
-  }, 1000);
+    if(totalSeconds<=0){totalSeconds=0;clearInterval(timerInterval);submitExam();}
+    var m=Math.floor(totalSeconds/60);var s=totalSeconds%60;
+    document.getElementById('timerDisplay').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    if(totalSeconds<=300)document.getElementById('timer').classList.add('warning');
+  },1000);
 }
 
-function submitExam() {
-  console.log('提交试卷', {submitted, answersCount: Object.keys(answers).length});
-  if(submitted) {
-    console.log('试卷已提交过');
-    return;
+function submitExam(){
+  console.log('【提交】开始提交试卷');
+  if(submitted){console.log('【提交】已提交过');return;}
+  submitted=true;clearInterval(timerInterval);
+  var score=0,correctCount=0,wrongCount=0,unanswered=0,singleScore=0,tfScore=0,essayScore=0;
+  wrongIds=[];
+  for(var i=0;i<singleChoice.length;i++){
+    var q=singleChoice[i];var userAns=answers[q.id];
+    if(userAns===undefined){unanswered++;}
+    else if(userAns===q.ans){correctCount++;singleScore+=2;score+=2;document.getElementById('qcard-'+q.id).classList.add('correct');}
+    else{wrongCount++;wrongIds.push(q.id);document.getElementById('qcard-'+q.id).classList.add('wrong');document.getElementById('opt-'+q.id+'-'+q.ans).classList.add('highlight-correct');}
   }
-  submitted = true;
-  clearInterval(timerInterval);
-  
-  var score = 0;
-  var correctCount = 0;
-  var wrongCount = 0;
-  var unanswered = 0;
-  var singleScore = 0, tfScore = 0, essayScore = 0;
-  wrongIds = [];
-  
-  // Single choice
-  for(var i=0; i<singleChoice.length; i++){
-    var q = singleChoice[i];
-    var userAns = answers[q.id];
-    if(userAns === undefined){
-      unanswered++;
-    } else if(userAns === q.ans){
-      correctCount++;
-      singleScore += 2;
-      score += 2;
-      document.getElementById('qcard-' + q.id).classList.add('correct');
-    } else {
-      wrongCount++;
-      wrongIds.push(q.id);
-      document.getElementById('qcard-' + q.id).classList.add('wrong');
-      document.getElementById('opt-' + q.id + '-' + q.ans).classList.add('highlight-correct');
-      if(userAns !== undefined){
-        document.getElementById('opt-' + q.id + '-' + userAns).classList.add('highlight-wrong');
-      }
-    }
+  for(var i=0;i<trueOrFalse.length;i++){
+    var q=trueOrFalse[i];var userAns=answers[q.id];var correctAns=q.ans?1:0;
+    if(userAns===undefined){unanswered++;}
+    else if(userAns===correctAns){correctCount++;tfScore+=1;score+=1;document.getElementById('qcard-'+q.id).classList.add('correct');}
+    else{wrongCount++;wrongIds.push(q.id);document.getElementById('qcard-'+q.id).classList.add('wrong');document.getElementById('opt-'+q.id+'-'+correctAns).classList.add('highlight-correct');}
   }
-  
-  // True/False
-  for(var i=0; i<trueOrFalse.length; i++){
-    var q = trueOrFalse[i];
-    var userAns = answers[q.id];
-    var correctAns = q.ans ? 1 : 0;
-    if(userAns === undefined){
-      unanswered++;
-    } else if(userAns === correctAns){
-      correctCount++;
-      tfScore += 1;
-      score += 1;
-      document.getElementById('qcard-' + q.id).classList.add('correct');
-    } else {
-      wrongCount++;
-      wrongIds.push(q.id);
-      document.getElementById('qcard-' + q.id).classList.add('wrong');
-      document.getElementById('opt-' + q.id + '-' + correctAns).classList.add('highlight-correct');
-      if(userAns !== undefined){
-        document.getElementById('opt-' + q.id + '-' + userAns).classList.add('highlight-wrong');
-      }
-    }
+  var essayConfig={41:{required:["互联网","C 端","B 端","匹配","量房","质检","陪签"]},42:{required:["排雷","推销","设计师","排雷师","报告"]},43:{required:["规范","审核","陪签","499","签约","免费"]},44:{required:["第三方","独立","JGJ","GB","合格","付款"]},45:{required:["银行","托管","30","40","节点","尾款","平台"]}};
+  for(var i=0;i<essayQs.length;i++){
+    var q=essayQs[i];var userAns=answers[q.id]||"";var config=essayConfig[q.id];
+    if(!userAns||userAns.length<5){unanswered++;document.getElementById('qcard-'+q.id).classList.add('wrong');continue;}
+    var hitRequired=0;var normalized=userAns.toLowerCase();
+    if(config){for(var j=0;j<config.required.length;j++){if(normalized.indexOf(config.required[j].toLowerCase())!==-1)hitRequired++;}}
+    var qScore=Math.min(6,3+Math.round(hitRequired*0.5));essayScore+=qScore;score+=qScore;
+    if(hitRequired<config.required.length*0.6){wrongCount++;wrongIds.push(q.id);document.getElementById('qcard-'+q.id).classList.add('wrong');}
+    else{correctCount++;document.getElementById('qcard-'+q.id).classList.add('correct');}
   }
-  
-  // Essay (keyword scoring)
-  var essayConfig = {
-    41: {required: ["互联网","C 端","B 端","匹配","量房","先装修后支付","质检","陪签"], bonus: ["智能","保障","赋能","平台"]},
-    42: {required: ["排雷","推销","设计师","排雷师","报告"], bonus: ["专业","风险","需求","预算"]},
-    43: {required: ["规范","审核","陪签","499","签约","免费"], bonus: ["问题","增项","工艺","材料"]},
-    44: {required: ["第三方","独立","JGJ","GB","合格","付款"], bonus: ["经验","培训","家庭","满意"]},
-    45: {required: ["银行","托管","30","40","节点","尾款","平台"], bonus: ["监管","资金","纠纷","安全"]}
-  };
-  
-  for(var i=0; i<essayQs.length; i++){
-    var q = essayQs[i];
-    var userAns = answers[q.id] || "";
-    var config = essayConfig[q.id];
-    
-    if(!userAns || userAns.length < 5){
-      unanswered++;
-      document.getElementById('qcard-' + q.id).classList.add('wrong');
-      continue;
+  document.getElementById('resultBigNum').textContent=score;
+  document.getElementById('statCorrect').textContent=correctCount;
+  document.getElementById('statWrong').textContent=wrongCount;
+  document.getElementById('statUnanswered').textContent=unanswered;
+  document.getElementById('detailSingle').textContent=singleScore+' / 60';
+  document.getElementById('detailTF').textContent=tfScore+' / 10';
+  document.getElementById('detailEssay').textContent=essayScore+' / 30';
+  document.getElementById('detailTotal').textContent=score+' / 100';
+  var ring=document.getElementById('resultRing');var grade=document.getElementById('resultGrade');
+  if(score>=80){ring.className='result-score-ring pass';grade.className='result-grade pass-grade';grade.textContent=score>=90?'🎉 优秀':'✅ 合格';}
+  else{ring.className='result-score-ring fail';grade.className='result-grade fail-grade';grade.textContent='❌ 不合格';}
+  var candidateName=document.getElementById('cName').value.trim()||'考生';
+  document.getElementById('resultName').textContent=candidateName+' · 考试成绩单';
+  if(wrongIds.length>0){
+    document.getElementById('wrongListCard').style.display='block';
+    var html='<div style="display:flex;flex-direction:column;gap:12px;">';
+    for(var i=0;i<wrongIds.length&&i<5;i++){
+      var qid=wrongIds[i];var q=allQuestions.find(function(x){return x.id===qid;});
+      html+='<div style="padding:12px;background:#FEF2F2;border-radius:8px;font-size:13px;"><div style="font-weight:600;margin-bottom:6px;">'+qid+'. '+q.q+'</div>';
+      if(q.opts){html+='<div style="color:#EF4444;">正确答案：'+letters[q.ans]+'. '+q.opts[q.ans]+'</div>';}
+      html+='</div>';
     }
-    
-    var hitRequired = 0;
-    var hitBonus = 0;
-    var normalized = userAns.toLowerCase();
-    
-    if(config){
-      for(var j=0; j<config.required.length; j++){
-        if(normalized.indexOf(config.required[j].toLowerCase()) !== -1) hitRequired++;
-      }
-      for(var j=0; j<config.bonus.length; j++){
-        if(normalized.indexOf(config.bonus[j].toLowerCase()) !== -1) hitBonus++;
-      }
-    }
-    
-    var qScore = Math.min(6, 3 + Math.round(hitRequired * 0.4) + Math.round(hitBonus * 0.25));
-    essayScore += qScore;
-    score += qScore;
-    
-    if(hitRequired < config.required.length * 0.6){
-      wrongCount++;
-      wrongIds.push(q.id);
-      document.getElementById('qcard-' + q.id).classList.add('wrong');
-    } else {
-      correctCount++;
-      document.getElementById('qcard-' + q.id).classList.add('correct');
-    }
-    
-    var hint = document.createElement('div');
-    hint.className = 'result-hint essay-hint';
-    hint.textContent = '得分：' + qScore + '/6 | 命中核心词：' + hitRequired + '/' + config.required.length + ' | 扩展词：+' + hitBonus;
-    document.getElementById('qcard-' + q.id).appendChild(hint);
-  }
-  
-  // Update result page
-  document.getElementById('resultBigNum').textContent = score;
-  document.getElementById('statCorrect').textContent = correctCount;
-  document.getElementById('statWrong').textContent = wrongCount;
-  document.getElementById('statUnanswered').textContent = unanswered;
-  
-  document.getElementById('detailSingle').textContent = singleScore + ' / 60';
-  document.getElementById('detailTF').textContent = tfScore + ' / 10';
-  document.getElementById('detailEssay').textContent = essayScore + ' / 30';
-  document.getElementById('detailTotal').textContent = score + ' / 100';
-  
-  // Pass/Fail
-  var ring = document.getElementById('resultRing');
-  var grade = document.getElementById('resultGrade');
-  var name = document.getElementById('resultName');
-  
-  if(score >= 80){
-    ring.className = 'result-score-ring pass';
-    grade.className = 'result-grade pass-grade';
-    grade.textContent = score >= 90 ? '🎉 优秀' : '✅ 合格';
-  } else {
-    ring.className = 'result-score-ring fail';
-    grade.className = 'result-grade fail-grade';
-    grade.textContent = '❌ 不合格';
-  }
-  
-  var candidateName = document.getElementById('cName').value.trim() || '考生';
-  name.textContent = candidateName + ' · 考试成绩单';
-  
-  // Wrong list
-  if(wrongIds.length > 0){
-    document.getElementById('wrongListCard').style.display = 'block';
-    var html = '<div style="display:flex;flex-direction:column;gap:12px;">';
-    for(var i=0; i<wrongIds.length && i<5; i++){
-      var qid = wrongIds[i];
-      var q = allQuestions.find(function(x){ return x.id === qid; });
-      html += '<div style="padding:12px;background:#FEF2F2;border-radius:8px;font-size:13px;">';
-      html += '<div style="font-weight:600;margin-bottom:6px;"><span class="q-num" style="width:20px;height:20px;font-size:11px;">' + qid + '</span> ' + q.q + '</div>';
-      if(q.opts){
-        html += '<div style="color:#EF4444;">正确答案：' + letters[q.ans] + '. ' + q.opts[q.ans] + '</div>';
-      }
-      html += '</div>';
-    }
-    if(wrongIds.length > 5){
-      html += '<div style="text-align:center;color:var(--gray-500);font-size:13px;">还有' + (wrongIds.length-5) + '道错题，点击"查看试卷详情"查看全部</div>';
-    }
-    html += '</div>';
-    document.getElementById('wrongList').innerHTML = html;
-  } else {
-    document.getElementById('wrongListCard').style.display = 'none';
-  }
-  
-  // Disable inputs
-  if(container){
-    var inputs = container.querySelectorAll('input,textarea');
-    for(var i=0; i<inputs.length; i++){
-      inputs[i].disabled = true;
-    }
-  }
-  document.getElementById('btnSubmit').disabled = true;
-  
-  // Show result
-  document.getElementById('examHeader').className = '';
-  document.getElementById('timer').className = 'timer-fixed';
-  document.getElementById('progressWrap').className = '';
-  document.getElementById('examBody').className = 'exam-body';
-  document.getElementById('navSidebar').className = 'nav-sidebar';
-  document.getElementById('resultPage').classList.add('visible');
-  window.scrollTo(0,0);
-  console.log('提交完成');
-  
-  // 提交到飞书
+    html+='</div>';document.getElementById('wrongList').innerHTML=html;
+  }else{document.getElementById('wrongListCard').style.display='none';}
+  if(container){var inputs=container.querySelectorAll('input,textarea');for(var i=0;i<inputs.length;i++){inputs[i].disabled=true;}}
+  document.getElementById('btnSubmit').disabled=true;
+  document.getElementById('examHeader').className='';document.getElementById('timer').className='timer-fixed';
+  document.getElementById('progressWrap').className='';document.getElementById('examBody').className='exam-body';
+  document.getElementById('navSidebar').className='nav-sidebar';document.getElementById('resultPage').classList.add('visible');
+  window.scrollTo(0,0);console.log('【提交】提交完成，分数：'+score);
   submitToFeishu();
 }
 
-function retryExam() {
-  if(!confirm('确定要重新答题吗？当前进度将丢失。')) return;
-  location.reload();
-}
-
-function reviewExam() {
+function retryExam(){if(!confirm('确定重新答题吗？'))return;location.reload();}
+function reviewExam(){
   document.getElementById('resultPage').classList.remove('visible');
   document.getElementById('examBody').classList.add('visible');
   document.getElementById('examHeader').classList.add('visible');
@@ -693,152 +430,64 @@ function reviewExam() {
   document.getElementById('navSidebar').classList.add('visible');
   document.getElementById('timer').classList.add('visible');
   window.scrollTo(0,0);
-  
-  setTimeout(function(){
-    if(wrongIds && wrongIds.length > 0){
-      document.getElementById('qcard-' + wrongIds[0]).scrollIntoView({behavior:'smooth', block:'center'});
-    } else {
-      document.getElementById('qcard-41').scrollIntoView({behavior:'smooth', block:'center'});
-    }
-  }, 100);
+  setTimeout(function(){if(wrongIds&&wrongIds.length>0){document.getElementById('qcard-'+wrongIds[0]).scrollIntoView({behavior:'smooth',block:'center'});}else{document.getElementById('qcard-41').scrollIntoView({behavior:'smooth',block:'center'});}},100);
 }
 
-// ========== FEISHU INTEGRATION ==========
-function submitToFeishu() {
-  if(!FEISHU_CONFIG.webhookUrl) {
-    console.log('未配置飞书 Webhook，跳过通知');
-    return;
+// ========== 飞书通知 ==========
+function submitToFeishu(){
+  console.log('【飞书】开始发送通知');
+  if(!FEISHU_CONFIG.webhookUrl){console.log('【飞书】未配置 Webhook');return;}
+  var candidateName=document.getElementById('cName').value.trim()||'未填写';
+  var candidateDept=document.getElementById('cDept').value.trim()||'未填写';
+  var candidateId=document.getElementById('cId').value.trim()||'未填写';
+  var examTime=new Date().toLocaleString('zh-CN');
+  var singleCorrect=0,tfCorrect=0,essayScore=0;
+  for(var i=0;i<singleChoice.length;i++){if(answers[singleChoice[i].id]===singleChoice[i].ans)singleCorrect++;}
+  for(var i=0;i<trueOrFalse.length;i++){var correctAns=trueOrFalse[i].ans?1:0;if(answers[trueOrFalse[i].id]==correctAns)tfCorrect++;}
+  var essayConfig={41:{required:["互联网","C 端","B 端","匹配"]},42:{required:["排雷","推销"]},43:{required:["规范","审核","陪签"]},44:{required:["第三方","独立"]},45:{required:["银行","托管"]}};
+  for(var i=0;i<essayQs.length;i++){
+    var q=essayQs[i];var userAns=answers[q.id]||"";var config=essayConfig[q.id];
+    if(userAns.length>=5&&config){var hitRequired=0;var normalized=userAns.toLowerCase();for(var j=0;j<config.required.length;j++){if(normalized.indexOf(config.required[j].toLowerCase())!==-1)hitRequired++;}if(hitRequired>=config.required.length*0.6)essayScore+=5;else essayScore+=3;}
   }
-  
-  var candidateName = document.getElementById('cName').value.trim() || '未填写';
-  var candidateDept = document.getElementById('cDept').value.trim() || '未填写';
-  var candidateId = document.getElementById('cId').value.trim() || '未填写';
-  var examTime = new Date().toLocaleString('zh-CN');
-  
-  var singleCorrect = 0, tfCorrect = 0, essayScore = 0;
-  
-  for(var i=0; i<singleChoice.length; i++){
-    if(answers[singleChoice[i].id] === singleChoice[i].ans) singleCorrect++;
-  }
-  
-  for(var i=0; i<trueOrFalse.length; i++){
-    var correctAns = trueOrFalse[i].ans ? 1 : 0;
-    if(answers[trueOrFalse[i].id] == correctAns) tfCorrect++;
-  }
-  
-  var essayConfig = {
-    41: {required: ["互联网","C 端","B 端","匹配","量房","先装修后支付","质检","陪签"]},
-    42: {required: ["排雷","推销","设计师","排雷师","报告"]},
-    43: {required: ["规范","审核","陪签","499","签约","免费"]},
-    44: {required: ["第三方","独立","JGJ","GB","合格","付款"]},
-    45: {required: ["银行","托管","30","40","节点","尾款","平台"]}
-  };
-  
-  for(var i=0; i<essayQs.length; i++){
-    var q = essayQs[i];
-    var userAns = answers[q.id] || "";
-    var config = essayConfig[q.id];
-    if(userAns.length >= 5 && config){
-      var hitRequired = 0;
-      var normalized = userAns.toLowerCase();
-      for(var j=0; j<config.required.length; j++){
-        if(normalized.indexOf(config.required[j].toLowerCase()) !== -1) hitRequired++;
-      }
-      if(hitRequired >= config.required.length * 0.6) essayScore += 5;
-      else essayScore += 3;
-    }
-  }
-  
-  var totalScore = singleCorrect * 2 + tfCorrect * 1 + essayScore;
-  var passStatus = totalScore >= 80 ? '合格' : '不合格';
-  if(totalScore >= 90) passStatus = '优秀';
-  
-  console.log('考试成绩:', {
-    姓名：candidateName,
-    部门：candidateDept,
-    工号：candidateId,
-    时间：examTime,
-    总分：totalScore,
-    结果：passStatus
-  });
-  
-  sendFeishuWebhook(candidateName, totalScore, passStatus, candidateDept, examTime);
+  var totalScore=singleCorrect*2+tfCorrect*1+essayScore;
+  var passStatus=totalScore>=80?'合格':'不合格';if(totalScore>=90)passStatus='优秀';
+  console.log('【飞书】成绩数据:',{姓名:candidateName,部门:candidateDept,总分:totalScore,结果:passStatus});
+  sendFeishuWebhook(candidateName,totalScore,passStatus,candidateDept,examTime);
 }
 
-function sendFeishuWebhook(name, score, status, dept, time) {
-  var emoji = status === '优秀' ? '🎉' : (status === '合格' ? '✅' : '❌');
-  
-  var message = {
-    msg_type: 'text',
-    content: {
-      text: emoji + ' 新考试成绩' + '\n姓名：' + name + '\n部门：' + dept + '\n总分：' + score + '\n结果：' + status + '\n时间：' + time
-    }
-  };
-  
-  console.log('发送飞书消息:', message);
-  
-  fetch(FEISHU_CONFIG.webhookUrl, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(message)
+function sendFeishuWebhook(name,score,status,dept,time){
+  console.log('【飞书】准备发送消息');
+  var emoji=status==='优秀'?'🎉':(status==='合格'?'✅':'❌');
+  var text=emoji+' 新考试成绩'+'\n姓名：'+name+'\n部门：'+dept+'\n总分：'+score+'\n结果：'+status+'\n时间：'+time;
+  console.log('【飞书】消息内容:',text);
+  var message={msg_type:'text',content:{text:text}};
+  console.log('【飞书】发送请求:',FEISHU_CONFIG.webhookUrl);
+  fetch(FEISHU_CONFIG.webhookUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(message)})
+  .then(function(response){console.log('【飞书】响应状态:',response.status);return response.json();})
+  .then(function(data){console.log('【飞书】响应数据:',data);
+    if(data.StatusCode===0||data.code===0){console.log('【飞书】✅ 发送成功');alert('✅ 提交成功！\n\n成绩已发送到飞书群\n\n总分：'+score+' ('+status+')');}
+    else{console.error('【飞书】❌ 发送失败:',data);alert('提交成功！但飞书通知失败');}
   })
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    console.log('飞书响应:', data);
-    if(data.StatusCode === 0 || data.code === 0) {
-      console.log('✅ 飞书通知已发送');
-      alert('✅ 提交成功！\n\n成绩已发送到飞书群\n\n总分：' + score + ' (' + status + ')');
-    } else {
-      console.error('❌ 飞书通知发送失败:', data);
-      alert('提交成功！但飞书通知发送失败：' + JSON.stringify(data));
-    }
-  })
-  .catch(function(error) {
-    console.error('❌ 飞书通知发送错误:', error);
-    alert('提交成功！但飞书通知发送出错');
-  });
+  .catch(function(error){console.error('【飞书】❌ 发送错误:',error);alert('提交成功！但飞书通知出错');});
 }
 
 // ========== INIT ==========
-document.addEventListener('DOMContentLoaded', function(){
-  console.log('DOM 加载完成');
-  container = document.getElementById('questionsContainer');
-  console.log('container:', container);
-  renderQuestions();
-  renderNav();
-  
-  var btnStart = document.getElementById('btnStart');
-  var btnSubmit = document.getElementById('btnSubmit');
-  var btnRetry = document.getElementById('btnRetry');
-  var btnReview = document.getElementById('btnReview');
-  
-  console.log('按钮元素:', {btnStart, btnSubmit, btnRetry, btnReview});
-  
-  if(btnStart) {
-    btnStart.addEventListener('click', startExam);
-    console.log('开始考试按钮已绑定');
-  }
-  if(btnSubmit) {
-    btnSubmit.addEventListener('click', function(){
-      console.log('提交按钮被点击');
-      submitExam();
-    });
-    console.log('提交按钮已绑定');
-  }
-  if(btnRetry) {
-    btnRetry.addEventListener('click', retryExam);
-    console.log('重试按钮已绑定');
-  }
-  if(btnReview) {
-    btnReview.addEventListener('click', reviewExam);
-    console.log('回顾按钮已绑定');
-  }
-  
-  console.log('考试系统初始化完成');
+document.addEventListener('DOMContentLoaded',function(){
+  console.log('【系统】DOM 加载完成');
+  container=document.getElementById('questionsContainer');
+  console.log('【系统】container:',container);
+  renderQuestions();renderNav();
+  var btnStart=document.getElementById('btnStart');
+  var btnSubmit=document.getElementById('btnSubmit');
+  var btnRetry=document.getElementById('btnRetry');
+  var btnReview=document.getElementById('btnReview');
+  console.log('【系统】按钮:',{btnStart:!!btnStart,btnSubmit:!!btnSubmit,btnRetry:!!btnRetry,btnReview:!!btnReview});
+  if(btnStart){btnStart.addEventListener('click',startExam);console.log('【系统】开始按钮已绑定');}
+  if(btnSubmit){btnSubmit.addEventListener('click',function(){console.log('【系统】提交按钮被点击');submitExam();});console.log('【系统】提交按钮已绑定');}
+  if(btnRetry){btnRetry.addEventListener('click',retryExam);}
+  if(btnReview){btnReview.addEventListener('click',reviewExam);}
+  console.log('【系统】初始化完成');
 });
-
 })();
 </script>
 </body>
